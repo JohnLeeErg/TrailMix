@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{326b2cb0-4d9c-4d97-92cc-6b24fb0c53ce}">
+        <property name="name">
+            <value>CabinMusicPuzzle</value>
+        </property>
+        <relationship name="folder">
+            <destination>{b2647c12-b7e9-49fb-898d-95fe8c5f1839}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{7595f3c8-c350-408e-80fb-e44513bc854a}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{7595f3c8-c350-408e-80fb-e44513bc854a}">
+        <property name="maximum">
+            <value>12</value>
+        </property>
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+    </object>
+</objects>

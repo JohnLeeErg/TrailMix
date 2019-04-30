@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{0e0d5182-6b43-4d8d-957d-e8d9b358499c}">
+        <property name="name">
+            <value>In Cave</value>
+        </property>
+        <relationship name="folder">
+            <destination>{b2647c12-b7e9-49fb-898d-95fe8c5f1839}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{12392e9a-665e-4414-9a10-cd095155c1d0}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{12392e9a-665e-4414-9a10-cd095155c1d0}">
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+    </object>
+</objects>

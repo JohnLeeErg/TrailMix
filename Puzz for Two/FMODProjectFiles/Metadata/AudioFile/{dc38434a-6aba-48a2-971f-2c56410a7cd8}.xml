@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{dc38434a-6aba-48a2-971f-2c56410a7cd8}">
+        <property name="assetPath">
+            <value>Design, Whoosh, Airy, Stick, Quick 4 SND11942.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>96</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>0.16889583333333333</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{6332709d-f92e-416c-b9e6-21d19988b8da}</destination>
+        </relationship>
+    </object>
+</objects>

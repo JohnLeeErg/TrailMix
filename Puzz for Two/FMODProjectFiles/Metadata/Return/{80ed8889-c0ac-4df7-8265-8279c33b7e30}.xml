@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="MixerReturn" id="{80ed8889-c0ac-4df7-8265-8279c33b7e30}">
+        <property name="name">
+            <value>A</value>
+        </property>
+        <relationship name="effectChain">
+            <destination>{9b94b798-7e3f-496d-8093-bf53ae5257a1}</destination>
+        </relationship>
+        <relationship name="panner">
+            <destination>{59ac9edb-a734-4f5e-980d-fda5c2bd942a}</destination>
+        </relationship>
+        <relationship name="output">
+            <destination>{2f85cff9-2ef1-4414-a14f-a27063bd9b76}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusEffectChain" id="{9b94b798-7e3f-496d-8093-bf53ae5257a1}">
+        <relationship name="effects">
+            <destination>{50a599c4-4dc2-4eaf-ab00-40dc18d36925}</destination>
+            <destination>{2d544ec9-24ec-427c-a58a-3581b88711a1}</destination>
+            <destination>{894188a4-a1de-41bd-ba46-20ddd03ea857}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusPanner" id="{59ac9edb-a734-4f5e-980d-fda5c2bd942a}"/>
+    <object class="MixerBusFader" id="{50a599c4-4dc2-4eaf-ab00-40dc18d36925}"/>
+    <object class="DelayEffect" id="{2d544ec9-24ec-427c-a58a-3581b88711a1}">
+        <property name="delay">
+            <value>720</value>
+        </property>
+        <property name="feedback">
+            <value>16</value>
+        </property>
+        <property name="dryLevel">
+            <value>-80</value>
+        </property>
+    </object>
+    <object class="MixerSend" id="{894188a4-a1de-41bd-ba46-20ddd03ea857}">
+        <property name="level">
+            <value>-2</value>
+        </property>
+        <property name="inputFormat">
+            <value>1</value>
+        </property>
+        <relationship name="mixerReturn">
+            <destination>{14de592b-f286-41f1-8472-600f4c3c2f2b}</destination>
+        </relationship>
+    </object>
+</objects>

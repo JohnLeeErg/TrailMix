@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="UiMixerView" id="{26e37c9a-eb55-4fae-b7ba-e3f110f1a535}">
+        <property name="name">
+            <value>SFXs</value>
+        </property>
+        <relationship name="assignedStrips">
+            <destination>{dd01c7fa-5c63-467a-acf6-a7c456461884}</destination>
+            <destination>{f517491d-f1bf-48bf-a934-2f80413fda02}</destination>
+            <destination>{63a11886-9301-4b66-8b1b-7ebba20886e0}</destination>
+            <destination>{48a32d8c-c493-4198-87f9-368fccef7a17}</destination>
+            <destination>{54477799-4fbf-407f-a01d-50735f1692e7}</destination>
+            <destination>{4980a555-fe5b-4264-b21b-d671c15d220b}</destination>
+            <destination>{ce13dccf-9965-48ef-98d1-d52438f10954}</destination>
+            <destination>{5f2c78c0-76a1-4b07-a7b2-ff785796f75a}</destination>
+            <destination>{7528a803-51d3-4b61-ba86-5489f2f4f513}</destination>
+            <destination>{bd66b213-a9c7-4b09-825f-76055703eea3}</destination>
+        </relationship>
+        <relationship name="mixer">
+            <destination>{d4f498e7-d25c-463e-93bc-731f1bfb8106}</destination>
+        </relationship>
+    </object>
+</objects>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="MixerReturn" id="{14de592b-f286-41f1-8472-600f4c3c2f2b}">
+        <property name="volume">
+            <value>2.60000014</value>
+        </property>
+        <property name="name">
+            <value>Reverb Cave</value>
+        </property>
+        <relationship name="effectChain">
+            <destination>{bb66f11c-2f28-4402-a467-0a65123c5549}</destination>
+        </relationship>
+        <relationship name="panner">
+            <destination>{5b1c7c32-2a2f-42da-960c-eaeffb872db3}</destination>
+        </relationship>
+        <relationship name="output">
+            <destination>{2f85cff9-2ef1-4414-a14f-a27063bd9b76}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusEffectChain" id="{bb66f11c-2f28-4402-a467-0a65123c5549}">
+        <relationship name="effects">
+            <destination>{aad85ce2-27ff-455e-9c35-ca223ba8669b}</destination>
+            <destination>{e5886a07-08b5-48c6-ad43-30d8328162fa}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusPanner" id="{5b1c7c32-2a2f-42da-960c-eaeffb872db3}"/>
+    <object class="MixerBusFader" id="{aad85ce2-27ff-455e-9c35-ca223ba8669b}"/>
+    <object class="SFXReverbEffect" id="{e5886a07-08b5-48c6-ad43-30d8328162fa}">
+        <property name="decayTime">
+            <value>3400</value>
+        </property>
+        <property name="HFReference">
+            <value>8500</value>
+        </property>
+        <property name="HFDecayRatio">
+            <value>30</value>
+        </property>
+        <property name="lowShelfFrequency">
+            <value>98</value>
+        </property>
+        <property name="lowShelfGain">
+            <value>-1.5</value>
+        </property>
+        <property name="highCut">
+            <value>3800</value>
+        </property>
+        <property name="wetLevel">
+            <value>2</value>
+        </property>
+        <property name="dryLevel">
+            <value>-74</value>
+        </property>
+    </object>
+</objects>

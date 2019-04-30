@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{ebffeec8-d679-4fd5-8ec1-d025edd132b9}">
+        <property name="assetPath">
+            <value>Traiiiiil Mix_With Vocals (test).mp3</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>52.401632653061228</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{6332709d-f92e-416c-b9e6-21d19988b8da}</destination>
+        </relationship>
+    </object>
+</objects>

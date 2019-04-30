@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="UiMixerView" id="{b1b91ca0-b50b-4c3c-91c0-3df31720bb1b}">
+        <property name="name">
+            <value>Title Screen</value>
+        </property>
+        <relationship name="assignedStrips">
+            <destination>{c6a4b22d-4439-4468-ac49-8b9c6d3df407}</destination>
+            <destination>{427d8fa2-f65e-484f-bfce-12660291f06f}</destination>
+            <destination>{9de235fe-0293-4b53-8603-54951e932563}</destination>
+        </relationship>
+        <relationship name="mixer">
+            <destination>{d4f498e7-d25c-463e-93bc-731f1bfb8106}</destination>
+        </relationship>
+    </object>
+</objects>

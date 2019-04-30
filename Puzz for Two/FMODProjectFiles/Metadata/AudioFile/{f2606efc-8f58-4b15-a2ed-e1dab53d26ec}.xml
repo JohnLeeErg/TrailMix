@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{f2606efc-8f58-4b15-a2ed-e1dab53d26ec}">
+        <property name="assetPath">
+            <value>3_Harm.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>34.909083333333335</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{6332709d-f92e-416c-b9e6-21d19988b8da}</destination>
+        </relationship>
+    </object>
+</objects>

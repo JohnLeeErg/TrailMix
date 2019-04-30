@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{8702454d-af15-48c5-b83c-900f949e479c}">
+        <property name="name">
+            <value>Amount of Friends</value>
+        </property>
+        <relationship name="folder">
+            <destination>{b2647c12-b7e9-49fb-898d-95fe8c5f1839}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{c4c07516-7820-45c8-8437-e81b72ce549c}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{c4c07516-7820-45c8-8437-e81b72ce549c}">
+        <property name="maximum">
+            <value>4</value>
+        </property>
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+        <property name="seekSpeed">
+            <value>0.5</value>
+        </property>
+        <property name="seekSpeedDescending">
+            <value>0.49999997019767761</value>
+        </property>
+        <property name="seekSpeedAsymmetric">
+            <value>true</value>
+        </property>
+    </object>
+</objects>

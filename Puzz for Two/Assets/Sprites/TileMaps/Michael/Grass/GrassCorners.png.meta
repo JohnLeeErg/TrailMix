@@ -1,0 +1,362 @@
+fileFormatVersion: 2
+guid: b351acefb10fb1447af1225da384dcd7
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: GrassCorners_0
+    21300002: GrassCorners_1
+    21300004: GrassCorners_2
+    21300006: GrassCorners_3
+    21300008: GrassCorners_4
+    21300010: GrassCorners_5
+    21300012: GrassCorners_6
+    21300014: GrassCorners_7
+    21300016: GrassCorners_8
+    21300018: GrassCorners_9
+    21300020: GrassCorners_10
+    21300022: GrassCorners_11
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GrassCorners_0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 213
+        width: 113
+        height: 100
+      alignment: 9
+      pivot: {x: 0.47, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46402bca373caf248b9fdcf244e0a4ca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_1
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 214
+        width: 110
+        height: 124
+      alignment: 9
+      pivot: {x: 0.45, y: 0.27}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bedff687e1b36942a45de138d1e6334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_2
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 227
+        width: 125
+        height: 100
+      alignment: 9
+      pivot: {x: 0.42, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01a0a6128c9bdb4e8e36f5bd18a668f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_3
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 207
+        width: 114
+        height: 100
+      alignment: 9
+      pivot: {x: 0.45, y: 0.35588074}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef246eb1e8b070348be2f5e9bd33334f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_4
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 228
+        width: 110
+        height: 100
+      alignment: 9
+      pivot: {x: 0.45, y: 0.18736237}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03659170f531605469b86b897b1e09ce
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_5
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 216
+        width: 113
+        height: 100
+      alignment: 9
+      pivot: {x: 0.46644902, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1d199946240d5f42a0c2c4f9b378d5a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_6
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 13
+        width: 112
+        height: 100
+      alignment: 9
+      pivot: {x: 0.53, y: 0.3494166}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d19afed2ec0ede84fb865fb31270da8f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_7
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 15
+        width: 108
+        height: 123
+      alignment: 9
+      pivot: {x: 0.54, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5282bca08b4b434a8062ed2e87249e1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_8
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 20
+        width: 120
+        height: 109
+      alignment: 9
+      pivot: {x: 0.5210617, y: 0.2797166}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48d6f6b273fb8c04a9f10c90b3f4a3af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_9
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 28
+        width: 107
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5118106, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17094aae7f777c446b4b94dde8cb79de
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_10
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 26
+        width: 107
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.18}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f511783605ae2644498751b214a5aae1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrassCorners_11
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 14
+        width: 112
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04147a8a256387949aa5bcabbb0801d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 212d4cf464c999147ac4ddf1f4d1cece
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: Grass
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

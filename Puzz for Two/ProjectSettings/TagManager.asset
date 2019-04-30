@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - HeartCollector
+  - Lava
+  - HeartHolder
+  - Killbox
+  - SittingSpot
+  - PlayerPiece
+  - AudioHouse
+  - AudioCave
+  - LevelDoors
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - NoPlayerCollision
+  - Heart
+  - lectorollector
+  - Wall
+  - Button
+  - HeartPlayerCollider
+  - perspective cam
+  - TemporaryNoHeartCol
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: paralax layer 1
+    uniqueID: 2418199809
+    locked: 0
+  - name: Background Environment
+    uniqueID: 3371139259
+    locked: 0
+  - name: Gate
+    uniqueID: 334757069
+    locked: 0
+  - name: Collider Environment
+    uniqueID: 346503561
+    locked: 0
+  - name: Outlines Environment
+    uniqueID: 3090667415
+    locked: 0
+  - name: Foreground Environment
+    uniqueID: 766271181
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Character
+    uniqueID: 2869749699
+    locked: 0
+  - name: Buttons
+    uniqueID: 2734751747
+    locked: 0
+  - name: InFrontForeground
+    uniqueID: 2618553619
+    locked: 0
+  - name: Ghost
+    uniqueID: 551090463
+    locked: 0
+  - name: looseBoys
+    uniqueID: 2191187603
+    locked: 0
+  - name: CharacterUI
+    uniqueID: 4168345559
+    locked: 0
+  - name: fader
+    uniqueID: 3246131251
+    locked: 0

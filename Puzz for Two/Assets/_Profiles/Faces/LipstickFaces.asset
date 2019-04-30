@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3034e52a9fc4118469ecd398eda41ffb, type: 3}
+  m_Name: LipstickFaces
+  m_EditorClassIdentifier: 
+  runTimeSprites:
+  - {fileID: 21300000, guid: 4f4c5908d54085b459a6ecaa8d1727ba, type: 3}
+  - {fileID: 21300000, guid: 6e722712131fc394fa0319d636894219, type: 3}
+  - {fileID: 21300000, guid: 460ba489ceb906c4f850ee8fb864a712, type: 3}
+  - {fileID: 21300000, guid: f618bf57b81e2b942917bfcab8c88c40, type: 3}
+  - {fileID: 21300000, guid: efd27d50caa4a574481cfdbf87c5dea8, type: 3}
+  - {fileID: 21300000, guid: fc13cacef70d8ae44bc0de3a60a7de44, type: 3}
+  - {fileID: 21300000, guid: 25201e28833c2b44db4ea8647f99b41e, type: 3}
+  - {fileID: 21300000, guid: 0d56115b6cce0434aad89f363cb206c2, type: 3}
+  - {fileID: 21300000, guid: 0c39762a13b7f8e49b300b31f5e1eb1a, type: 3}
+  - {fileID: 21300000, guid: 6ad79083d232bce4eb4b95e4b09c89cd, type: 3}
+  - {fileID: 21300000, guid: 58bab1711340b814e996ec8590e34d44, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 4f4c5908d54085b459a6ecaa8d1727ba, type: 3}
+  - {fileID: 21300000, guid: 6e722712131fc394fa0319d636894219, type: 3}
+  - {fileID: 21300000, guid: 460ba489ceb906c4f850ee8fb864a712, type: 3}
+  - {fileID: 21300000, guid: f618bf57b81e2b942917bfcab8c88c40, type: 3}
+  - {fileID: 21300000, guid: efd27d50caa4a574481cfdbf87c5dea8, type: 3}
+  - {fileID: 21300000, guid: fc13cacef70d8ae44bc0de3a60a7de44, type: 3}
+  - {fileID: 21300000, guid: 25201e28833c2b44db4ea8647f99b41e, type: 3}
+  - {fileID: 21300000, guid: 0d56115b6cce0434aad89f363cb206c2, type: 3}
+  - {fileID: 21300000, guid: 0c39762a13b7f8e49b300b31f5e1eb1a, type: 3}
+  - {fileID: 21300000, guid: cd667c7731368c94581b1b26c65bf78f, type: 3}
+  - {fileID: 21300000, guid: 0f4ab61b1f59b7a49a0ebce2c70a73bc, type: 3}
+  - {fileID: 21300000, guid: e8140554afe85ef4d99fd6e05b83b3cb, type: 3}
+  - {fileID: 21300000, guid: 6ad79083d232bce4eb4b95e4b09c89cd, type: 3}
+  - {fileID: 21300000, guid: 58bab1711340b814e996ec8590e34d44, type: 3}

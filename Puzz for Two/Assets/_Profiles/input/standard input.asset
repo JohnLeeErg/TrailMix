@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d92b371d6e21e04cb466ca7f3e5dd71, type: 3}
+  m_Name: standard input
+  m_EditorClassIdentifier: 
+  throwButton: 16
+  jumpButton: 19
+  catchButton: 15
+  lockMovementButton: 18
+  resetButton: 101
+  swapButton: 100
+  upButton: 1
+  downButton: 2
+  leftButton: 3
+  rightButton: 4
+  confirmButton: 21
+  altUpButton: 6
+  altDownButton: 7
+  altLeftButton: 8
+  altRightButton: 9
+  lockThrowingButton: 17
+  throwKey: 61
+  jumpKey: 76
+  catchKey: 59
+  lockMovementKey: 38
+  resetKey: 72
+  swapKey: 5
+  upKey: 85
+  downKey: 86
+  leftKey: 83
+  rightKey: 84
+  confirmKey: 59
+  altUpKey: 0
+  altDownKey: 0
+  altLeftKey: 0
+  altRightKey: 0
+  lockThrowingKey: 57
+  p1ThrowKey: 31
+  p1JumpKey: 30
+  p1CatchKey: 32
+  p1LockMovementKey: 0
+  p1ResetKey: 76
+  p1SwapKey: 0
+  p1UpKey: 58
+  p1DownKey: 54
+  p1LeftKey: 36
+  p1RightKey: 39
+  p1ConfirmKey: 32
+  p1AltUpKey: 0
+  p1AltDownKey: 0
+  p1AltLeftKey: 0
+  p1AltRightKey: 0
+  p1LockThrowingKey: 0
+  p2ThrowKey: 75
+  p2JumpKey: 74
+  p2CatchKey: 9
+  p2LockMovementKey: 0
+  p2ResetKey: 72
+  p2SwapKey: 0
+  p2UpKey: 85
+  p2DownKey: 86
+  p2LeftKey: 83
+  p2RightKey: 84
+  p2ConfirmKey: 9
+  p2AltUpKey: 0
+  p2AltDownKey: 0
+  p2AltLeftKey: 0
+  p2AltRightKey: 0
+  p2LockThrowingKey: 0

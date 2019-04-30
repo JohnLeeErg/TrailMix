@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386cc4fcc60e4c44d95ba590f3d1f51c, type: 3}
+  m_Name: floor
+  m_EditorClassIdentifier: 
+  TileName: Floor
+  identifier: {x: 0, y: 1, z: 1, w: 1}
+  variants:
+  - {fileID: 11400000, guid: 86c2dd4ecd014dc43a32a8321ab4f09f, type: 2}
+  - {fileID: 11400000, guid: 499ce364ca1401f459756e0873b5b031, type: 2}
+  - {fileID: 11400000, guid: be17e6bb225e906429a63036481f3cd4, type: 2}
+  - {fileID: 11400000, guid: ec419bf03fe382b418f043f9eb8edb15, type: 2}

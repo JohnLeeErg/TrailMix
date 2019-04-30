@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d33038ab4b2bf418551fa08fd64baa, type: 3}
+  m_Name: Player Throwing
+  m_EditorClassIdentifier: 
+  diagonalUp:
+    yDistance: 3
+    xDistance: 5
+    timeToApex: 0.2
+    gravity: 150
+    startingVelocity: {x: 12.5, y: 30}
+  diagonalDown:
+    yDistance: 0.5
+    xDistance: 3
+    timeToApex: 0.2
+    gravity: 25
+    startingVelocity: {x: 7.5, y: 5}
+  upwards:
+    yDistance: 4
+    xDistance: 0
+    timeToApex: 0.6
+    gravity: 22.222221
+    startingVelocity: {x: 0, y: 13.333333}
+  downwards:
+    yDistance: 1
+    xDistance: 0
+    timeToApex: 0.2
+    gravity: 50
+    startingVelocity: {x: 0, y: 10}
+  horizontals:
+    yDistance: 0
+    xDistance: 5
+    timeToApex: 0.2
+    gravity: 0
+    startingVelocity: {x: 12.5, y: 0}

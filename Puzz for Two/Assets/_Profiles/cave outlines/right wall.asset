@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386cc4fcc60e4c44d95ba590f3d1f51c, type: 3}
+  m_Name: right wall
+  m_EditorClassIdentifier: 
+  identifier: {x: 1, y: 1, z: 0, w: 1}
+  variants:
+  - {fileID: 11400000, guid: 818113c9cdc759c408e384b704cff193, type: 2}
+  - {fileID: 11400000, guid: 9425c1300a01d914d80295304fd06094, type: 2}
+  - {fileID: 11400000, guid: 573511a2738903348812df2b1da1c1d7, type: 2}
+  - {fileID: 11400000, guid: eba9a5bf108af414c88a9f6f32ffb7b7, type: 2}

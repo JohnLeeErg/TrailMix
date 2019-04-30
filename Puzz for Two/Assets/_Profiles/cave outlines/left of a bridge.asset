@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386cc4fcc60e4c44d95ba590f3d1f51c, type: 3}
+  m_Name: left of a bridge
+  m_EditorClassIdentifier: 
+  identifier: {x: 0, y: 0, z: 0, w: 1}
+  variants:
+  - {fileID: 11400000, guid: eefdbbbe3d524c443bc22effa7353f75, type: 2}
+  - {fileID: 11400000, guid: bbd6d48fe822204459d39061bf9c22b3, type: 2}

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386cc4fcc60e4c44d95ba590f3d1f51c, type: 3}
+  m_Name: middle of a bridge
+  m_EditorClassIdentifier: 
+  identifier: {x: 0, y: 0, z: 1, w: 1}
+  variants:
+  - {fileID: 11400000, guid: 60d4fa75fc2962143add83696b20b9bc, type: 2}
+  - {fileID: 11400000, guid: be303ecdbf799fd4cb381c8e508d7298, type: 2}
+  - {fileID: 11400000, guid: 657f28000b1751547ab71ee5118e84fa, type: 2}
+  - {fileID: 11400000, guid: 35168adf0aae10b42acb13e6d490d4af, type: 2}

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386cc4fcc60e4c44d95ba590f3d1f51c, type: 3}
+  m_Name: ceilling
+  m_EditorClassIdentifier: 
+  identifier: {x: 1, y: 0, z: 1, w: 1}
+  variants:
+  - {fileID: 11400000, guid: 7524524b9eec1ff4788b55753dc59f6e, type: 2}
+  - {fileID: 11400000, guid: 9be543168a6e4174796196ef8080a559, type: 2}
+  - {fileID: 11400000, guid: 36f3c9dfb3890e945ae3a5a36fadb036, type: 2}
+  - {fileID: 11400000, guid: 9d06e6ff7dc4c5849ac51b737bb418f8, type: 2}

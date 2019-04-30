@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386cc4fcc60e4c44d95ba590f3d1f51c, type: 3}
+  m_Name: Solo
+  m_EditorClassIdentifier: 
+  identifier: {x: 0, y: 0, z: 0, w: 0}
+  variants:
+  - {fileID: 11400000, guid: ba3480cf6fd6bc940b942ebc73c28b0d, type: 2}
+  - {fileID: 11400000, guid: dd69da2a91a374b47a606a3c619a90ab, type: 2}
+  - {fileID: 11400000, guid: 4d63150a93a92234e8c80abe48ee3f0b, type: 2}
+  - {fileID: 11400000, guid: 9d20443a9ca71b246910214288234ed1, type: 2}
+  - {fileID: 11400000, guid: 3711217998b97734d93271ce53e15779, type: 2}
+  - {fileID: 11400000, guid: da807797390c0c44f809aa5faacdb4f2, type: 2}
+  - {fileID: 11400000, guid: 9b1fe4d9bd6232849befd16f9fcde08d, type: 2}
+  - {fileID: 11400000, guid: 2c7195cd1807db845b55707e9899fc3c, type: 2}

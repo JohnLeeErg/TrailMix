@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386cc4fcc60e4c44d95ba590f3d1f51c, type: 3}
+  m_Name: Solo
+  m_EditorClassIdentifier: 
+  TileName: Solo
+  identifier: {x: 0, y: 0, z: 0, w: 0}
+  variants:
+  - {fileID: 11400000, guid: 85a503dbdd6ea294599f860bb5937ad8, type: 2}
+  - {fileID: 11400000, guid: 06ee870fc82a8924888f679434e87de8, type: 2}
+  - {fileID: 11400000, guid: 6a3bde1295d6c994e8c77e3e626b8a74, type: 2}
+  - {fileID: 11400000, guid: d4604ea2f76694e4099f69d96e80f381, type: 2}

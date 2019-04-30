@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d92b371d6e21e04cb466ca7f3e5dd71, type: 3}
+  m_Name: for the broken controller
+  m_EditorClassIdentifier: 
+  throwButton: 16
+  jumpButton: 20
+  catchButton: 15
+  lockMovementButton: 17
+  resetButton: 101
+  swapButton: 100
+  upButton: 1
+  downButton: 2
+  leftButton: 3
+  rightButton: 4
+  confirmButton: 21
+  altUpButton: 6
+  altDownButton: 7
+  altLeftButton: 8
+  altRightButton: 9
+  throwKey: 61
+  jumpKey: 76
+  catchKey: 59
+  lockMovementKey: 38
+  resetKey: 72
+  swapKey: 5
+  upKey: 85
+  downKey: 86
+  leftKey: 83
+  rightKey: 84
+  confirmKey: 59
+  altUpKey: 0
+  altDownKey: 0
+  altLeftKey: 0
+  altRightKey: 0

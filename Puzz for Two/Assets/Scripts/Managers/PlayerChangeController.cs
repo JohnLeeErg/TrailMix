@@ -35,20 +35,20 @@ public class PlayerChangeController : MonoBehaviour
         controllerManagerInstance = NewControllerManager.instance;
         if (controllerManagerInstance.swapPermitted && controllerManagerInstance.controllerTypeInputted != CurrentControllerSetup.Undecided)
         {
-            //foreach (SpriteRenderer eachSpriteRenderer in p1Movement.GetComponentsInChildren<SpriteRenderer>())
-            //{
+            foreach (PlayerPiece eachPiece in p1Movement.GetComponentsInChildren<PlayerPiece>())
+            {
 
-            //    if (darkened1)
-            //    {
-            //        eachSpriteRenderer.color += subGray*20;
-            //        darkened1 = false;
-            //    }
-            //}
-            //foreach (SpriteRenderer eachSpriteRenderer in p2Movement.GetComponentsInChildren<SpriteRenderer>())
-            //{
-            //    eachSpriteRenderer.color -= subGray;
-            //    darkened2 = true;
-            //}
+                if (darkened1)
+                {
+                    eachPiece.GetComponentInChildren<SpriteRenderer>().color += subGray * 20;
+                    darkened1 = false;
+                }
+            }
+            foreach (PlayerPiece eachPiece in p2Movement.GetComponentsInChildren<PlayerPiece>())
+            {
+                eachPiece.GetComponentInChildren<SpriteRenderer>().color -= subGray;
+                darkened2 = true;
+            }
         }
     }
 
@@ -71,40 +71,17 @@ public class PlayerChangeController : MonoBehaviour
 
         if (controllerManagerInstance.swapPermitted && (p1Movement.playerInput.switchAction.WasReleased || p2Movement.playerInput.switchAction.WasReleased))
         {
-            //if (p1Movement.playerInput.switchAction.WasReleased && controllerManagerInstance.controllerTypeInputted!=CurrentControllerSetup.Undecided) //if it was p1 what did the deed
-            //{
-                
-            //    foreach (SpriteRenderer eachSpriteRenderer in p1Movement.GetComponentsInChildren<SpriteRenderer>())
-            //    {
-            //        eachSpriteRenderer.color -= subGray;
-            //        darkened1 = true;
-            //    }
-            //    foreach (SpriteRenderer eachSpriteRenderer in p2Movement.GetComponentsInChildren<SpriteRenderer>())
-            //    {
-            //        if (darkened2)
-            //        {
-            //            eachSpriteRenderer.color += subGray * 20;
-            //            darkened2 = false;
-            //        }
-            //    }
-            //}
-            //else if( controllerManagerInstance.controllerTypeInputted != CurrentControllerSetup.Undecided)
-            //{
-            //    foreach (SpriteRenderer eachSpriteRenderer in p1Movement.GetComponentsInChildren<SpriteRenderer>())
-            //    {
+            Color swapperColor;
+            SpriteRenderer p1Sp, p2Sp;
+            for(int i = 0; i < p1Movement.transform.GetChild(0).childCount; i++)
+            {
+                p1Sp = p1Movement.transform.GetChild(0).GetChild(i).GetComponentInChildren<SpriteRenderer>();
+                p2Sp = p2Movement.transform.GetChild(0).GetChild(i).GetComponentInChildren<SpriteRenderer>();
 
-            //        if (darkened1)
-            //        {
-            //            eachSpriteRenderer.color += subGray * 20;
-            //            darkened1 = false;
-            //        }
-            //    }
-            //    foreach (SpriteRenderer eachSpriteRenderer in p2Movement.GetComponentsInChildren<SpriteRenderer>())
-            //    {
-            //        eachSpriteRenderer.color -= subGray;
-            //        darkened2 = true;
-            //    }
-            //}
+                swapperColor = p1Sp.color;
+                p1Sp.color = p2Sp.color;
+                p2Sp.color = swapperColor;
+            }
 
             switcher = p1Movement.playerNumber;
             p1Movement.playerNumber = p2Movement.playerNumber;

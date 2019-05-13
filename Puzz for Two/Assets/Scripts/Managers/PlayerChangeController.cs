@@ -35,18 +35,18 @@ public class PlayerChangeController : MonoBehaviour
         controllerManagerInstance = NewControllerManager.instance;
         if (controllerManagerInstance.swapPermitted && controllerManagerInstance.controllerTypeInputted != CurrentControllerSetup.Undecided)
         {
-            foreach (PlayerPiece eachPiece in p1Movement.GetComponentsInChildren<PlayerPiece>())
+            foreach (PlayerPiece eachPiece in p1Movement.GetComponentsInChildren<PlayerPiece>(true))
             {
 
                 if (darkened1)
                 {
-                    eachPiece.GetComponentInChildren<SpriteRenderer>().color += subGray * 20;
+                    eachPiece.GetComponentInChildren<SpriteRenderer>(true).color += subGray * 20;
                     darkened1 = false;
                 }
             }
-            foreach (PlayerPiece eachPiece in p2Movement.GetComponentsInChildren<PlayerPiece>())
+            foreach (PlayerPiece eachPiece in p2Movement.GetComponentsInChildren<PlayerPiece>(true))
             {
-                eachPiece.GetComponentInChildren<SpriteRenderer>().color -= subGray;
+                eachPiece.GetComponentInChildren<SpriteRenderer>(true).color -= subGray;
                 darkened2 = true;
             }
         }

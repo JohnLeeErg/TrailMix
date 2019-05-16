@@ -3115,7 +3115,7 @@ Prefab:
     - target: {fileID: 114964161963801468, guid: 0c22d5d3e4837ba478f1e5d49bb4231a,
         type: 2}
       propertyPath: controllerTypeInputted
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114964161963801468, guid: 0c22d5d3e4837ba478f1e5d49bb4231a,
         type: 2}

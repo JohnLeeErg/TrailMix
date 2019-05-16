@@ -51,6 +51,7 @@ public class MyCharacterActions : PlayerActionSet
             jumpAction.AddDefaultBinding(sourceOfInputs.jumpButton);
             lockMovementAction.AddDefaultBinding(sourceOfInputs.lockMovementButton);
             resetAction.AddDefaultBinding(sourceOfInputs.resetButton);
+            resetAction.AddDefaultBinding(InputControlType.Options);
             switchAction.AddDefaultBinding(sourceOfInputs.swapButton);
             up.AddDefaultBinding(sourceOfInputs.upButton);
             down.AddDefaultBinding(sourceOfInputs.downButton);

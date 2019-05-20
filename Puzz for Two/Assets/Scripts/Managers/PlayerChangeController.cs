@@ -17,6 +17,7 @@ public class PlayerChangeController : MonoBehaviour
     float howGrayIsIt = .8f;
     NewControllerManager controllerManagerInstance;
     bool darkened1, darkened2;
+    float timeSlowInterval=.1f;
     private void Start()
     {
         subGray = new Color(Color.gray.r * howGrayIsIt, Color.gray.g * howGrayIsIt, Color.gray.b * howGrayIsIt, 0);
@@ -92,6 +93,21 @@ public class PlayerChangeController : MonoBehaviour
             p1Movement.triedControls = false;
             p2Movement.triedControls = false;
         }
-    }
+        if (Input.GetKeyUp(KeyCode.Minus))
+        {
 
+            Time.timeScale = Mathf.Clamp(Time.timeScale - timeSlowInterval, 0.1f, 4);
+
+        }
+        else if (Input.GetKeyUp(KeyCode.Equals))
+        {
+
+            Time.timeScale = Mathf.Clamp(Time.timeScale+ timeSlowInterval,0.1f, 4); 
+        }
+        else if (Input.GetKeyUp(KeyCode.Alpha0))
+        {
+            Time.timeScale = 1;
+        }
+    }
+    
 }

@@ -48,7 +48,7 @@ public class MovingCamera : MonoBehaviour
                 if ((p2.transform.position - p1.transform.position).magnitude < biasOffsetMag)
                 {
                     Vector3 targetPosition= new Vector3(AveragePosition().x, AveragePosition().y, cam.transform.position.z);
-                    cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, targetPosition.x, moveSpeed), Mathf.Lerp(cam.transform.position.y, targetPosition.y, moveSpeed), cam.transform.position.z);
+                    cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, targetPosition.x, moveSpeed * Time.deltaTime), Mathf.Lerp(cam.transform.position.y, targetPosition.y, moveSpeed * Time.deltaTime), cam.transform.position.z);
                     
                     // cam.transform.position = new Vector3(cam.transform.position.x, AveragePosition().y, cam.transform.position.z);
                 }
@@ -59,7 +59,7 @@ public class MovingCamera : MonoBehaviour
                     Vector3 lastOnScreenPoint = (p1.transform.position + (p2.transform.position - p1.transform.position).normalized * biasOffsetMag);
 
                     Vector3 targetPosition = new Vector3(AveragePosition().x, AveragePosition().y, cam.transform.position.z)+lastOnScreenPoint;
-                    cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, targetPosition.x, moveSpeed), Mathf.Lerp(cam.transform.position.y, targetPosition.y, moveSpeed), cam.transform.position.z);
+                    cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, targetPosition.x, moveSpeed * Time.deltaTime), Mathf.Lerp(cam.transform.position.y, targetPosition.y, moveSpeed * Time.deltaTime), cam.transform.position.z);
 
                 }
 
@@ -69,7 +69,7 @@ public class MovingCamera : MonoBehaviour
         {
 
             Vector3 targetPosition = new Vector3(AveragePosition().x, AveragePosition().y, cam.transform.position.z);
-            cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, targetPosition.x, moveSpeed), Mathf.Lerp(cam.transform.position.y, targetPosition.y, moveSpeed), cam.transform.position.z);
+            cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, targetPosition.x, moveSpeed * Time.deltaTime), Mathf.Lerp(cam.transform.position.y, targetPosition.y, moveSpeed * Time.deltaTime), cam.transform.position.z);
 
             // cam.transform.position = new Vector3(cam.transform.position.x, AveragePosition().y, cam.transform.position.z);
 

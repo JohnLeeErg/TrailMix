@@ -76551,7 +76551,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1016967332022166, guid: ed0afe4b592f51a45bd489f5142566ed, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1222174185540248, guid: ed0afe4b592f51a45bd489f5142566ed, type: 2}
       propertyPath: m_IsActive
@@ -76562,6 +76562,10 @@ Prefab:
       propertyPath: InteractionMusic
       value: 
       objectReference: {fileID: 34428964}
+    - target: {fileID: 1723206855758276, guid: ed0afe4b592f51a45bd489f5142566ed, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed0afe4b592f51a45bd489f5142566ed, type: 2}
   m_IsPrefabAsset: 0

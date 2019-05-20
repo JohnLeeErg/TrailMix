@@ -41,7 +41,7 @@ public class EndCutsceneStuff : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (!ended)
         {
             if (p1.transform.position.x > xValue && p2.transform.position.x > xValue)

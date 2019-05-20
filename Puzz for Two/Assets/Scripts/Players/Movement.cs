@@ -137,6 +137,7 @@ public class Movement : MonoBehaviour
     }
     void Awake()
     {
+        
         xSpeedGrounded = PlayerSettings.speedXGrounded;
         xSpeedAerial = PlayerSettings.speedXAerial;
         jumpHeight = PlayerSettings.jumpHeight;
@@ -270,7 +271,7 @@ public class Movement : MonoBehaviour
     {
         if (rigidBodyComp.IsTouchingLayers(LayerMask.NameToLayer("Wall")))
         {
-            print("in the floor");
+            //print("in the floor");
 
         }
         if (!pushing)
@@ -1182,7 +1183,7 @@ public class Movement : MonoBehaviour
             //}
             if (!grounded)
             {
-                timeUngrounded+=Time.fixedDeltaTime;
+                timeUngrounded+=Time.deltaTime;
             }
         }
     }

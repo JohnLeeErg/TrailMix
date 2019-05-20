@@ -22,7 +22,7 @@ MonoBehaviour:
   maxHorizontalJump: 1.875
   xJumpSlowingPoint: 0.73
   bonkAssist: 0.1
-  walkOffLedgeJumpWindow: 0.083333336
+  walkOffLedgeJumpWindow: 0.08
   shortHops: 1
   castlevaniaJumps: 0
   pushing: 0

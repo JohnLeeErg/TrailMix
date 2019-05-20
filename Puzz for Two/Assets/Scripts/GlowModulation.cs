@@ -15,7 +15,7 @@ public class GlowModulation : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (goingDown)
         {
             mySR.color -= new Color(0, 0, 0, .001f);

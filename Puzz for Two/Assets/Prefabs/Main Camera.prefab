@@ -592,7 +592,7 @@ MonoBehaviour:
   minThreshold: 0
   minXThreshhold: 0.05
   yOffsetValue: 0
-  moveSpeed: 0.1
+  moveSpeed: 8
   biasOffsetMag: 0
   ghostDistance: 1.45
   xArrowClamp: 17

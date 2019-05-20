@@ -1182,7 +1182,7 @@ public class Movement : MonoBehaviour
             //}
             if (!grounded)
             {
-                timeUngrounded++;
+                timeUngrounded+=Time.fixedDeltaTime;
             }
         }
     }

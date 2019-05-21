@@ -54,8 +54,7 @@ __pycache__/
 # tools/
 
 *.fla
-*.mp4
-*.wav
+
 
 ### JetBrains ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using InControl;
-
+using UnityEngine.UI;
 /// <summary>
 /// debug control for switching controllers, currently only for movemeent will add shotting when shotting be done
 /// </summary>
@@ -17,9 +17,18 @@ public class PlayerChangeController : MonoBehaviour
     float howGrayIsIt = .8f;
     NewControllerManager controllerManagerInstance;
     bool darkened1, darkened2;
-    float timeSlowInterval=.1f;
+    float timeSlowInterval = .1f;
+    Text timeScaleDisplay;
     private void Start()
     {
+        timeScaleDisplay = GameObject.Find("Time Scale Display").GetComponent<Text>();
+        if (timeScaleDisplay)
+        {
+            if (Time.timeScale != 1)
+            {
+                timeScaleDisplay.text = "*Timescale: " + Time.timeScale;
+            }
+        }
         subGray = new Color(Color.gray.r * howGrayIsIt, Color.gray.g * howGrayIsIt, Color.gray.b * howGrayIsIt, 0);
         if (!p1Movement)
         {
@@ -74,7 +83,7 @@ public class PlayerChangeController : MonoBehaviour
         {
             Color swapperColor;
             SpriteRenderer p1Sp, p2Sp;
-            for(int i = 0; i < p1Movement.transform.GetChild(0).childCount; i++)
+            for (int i = 0; i < p1Movement.transform.GetChild(0).childCount; i++)
             {
                 p1Sp = p1Movement.transform.GetChild(0).GetChild(i).GetComponentInChildren<SpriteRenderer>();
                 p2Sp = p2Movement.transform.GetChild(0).GetChild(i).GetComponentInChildren<SpriteRenderer>();
@@ -96,17 +105,39 @@ public class PlayerChangeController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Minus))
         {
 
-            Time.timeScale = Mathf.Clamp(Time.timeScale - timeSlowInterval, 0.1f, 4);
+            Time.timeScale = (float) System.Math.Round(Mathf.Clamp(Time.timeScale - timeSlowInterval, 0.1f, 4),2);
+            if (timeScaleDisplay)
+            {
+                if (Time.timeScale != 1)
+                {
+                    timeScaleDisplay.text = "*Timescale: " +Time.timeScale;
+                }
+            }
 
         }
         else if (Input.GetKeyUp(KeyCode.Equals))
         {
 
-            Time.timeScale = Mathf.Clamp(Time.timeScale+ timeSlowInterval,0.1f, 4); 
+            Time.timeScale = (float)System.Math.Round(Mathf.Clamp(Time.timeScale + timeSlowInterval, 0.1f, 4), 2);
+            if (timeScaleDisplay)
+            {
+                if (Time.timeScale != 1)
+                {
+                    timeScaleDisplay.text = "*Timescale: " +Time.timeScale;
+                }
+            }
         }
         else if (Input.GetKeyUp(KeyCode.Alpha0))
         {
             Time.timeScale = 1;
+        }
+        if (timeScaleDisplay)
+        {
+            if (Time.timeScale == 1)
+            {
+                timeScaleDisplay.text ="";
+            }
+           
         }
     }
     

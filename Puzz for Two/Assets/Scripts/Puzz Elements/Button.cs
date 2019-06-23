@@ -8,7 +8,7 @@ public class Button : MonoBehaviour
     [HideInInspector] ButtonParent buttonCheckParent;
     public Color deactivatedColor;
     public Color activatedColor;
-    public bool isActivated, requireExactBlock, playSound = true;
+    public bool isActivated, requireExactBlock, sticky, playSound = true;
     public GameObject owner;
     SpriteRenderer spComponent;
     Collider2D myCol;
@@ -59,15 +59,13 @@ public class Button : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!myCol.IsTouchingLayers())
+        if (!sticky)
         {
-            owner = null;
-            spComponent.color = deactivatedColor;
-            if (buttonHighlightSprite != null)
+            if (!myCol.IsTouchingLayers())
             {
-                buttonHighlightSprite.enabled = false;
+
+                DeactivateButtonNoLayers();
             }
-            isActivated = false;
         }
     }
     public void FadeAway()
@@ -140,22 +138,7 @@ public class Button : MonoBehaviour
     {
         if (!isActivated && collision.gameObject.tag == "Player" && buttonCheckParent.IsNewOwner(collision.gameObject) && (!requireExactBlock || SameRoundedPosition(collision.gameObject.transform.position)))
         {
-            spComponent.color = activatedColor;
-            if (buttonHighlightSprite != null)
-            {
-                buttonHighlightSprite.enabled = true;
-            }
-            isActivated = true;
-            owner = collision.gameObject;
-            if (!dontFlashColor)
-            {
-                foreach (Tilemap eachGate in gateRefs)
-                {
-                    StartCoroutine(FlashGate(eachGate));
-                }
-            }
-            if (playSound)
-                fModButtonPressEvent.start();
+            ActivateButton(collision.gameObject);
         }
 
     }
@@ -174,6 +157,37 @@ public class Button : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && owner == collision.gameObject)
         {
+            DeactivateButton();
+
+        }
+    }
+
+    // <marty>
+    // These functions are separate/public now so they can be called from other scripts
+    // Sorry, I needed it for the level where the buttons stick to the screen
+
+    public void ActivateButton(GameObject touchingGuy)
+    {
+        spComponent.color = activatedColor;
+        if (buttonHighlightSprite != null)
+        {
+            buttonHighlightSprite.enabled = true;
+        }
+        isActivated = true;
+        owner = touchingGuy;
+        if (!dontFlashColor)
+        {
+            foreach (Tilemap eachGate in gateRefs)
+            {
+                StartCoroutine(FlashGate(eachGate));
+            }
+        }
+        if (playSound)
+            fModButtonPressEvent.start();
+    }
+
+    public void DeactivateButton()
+    {
             spComponent.color = deactivatedColor;
             isActivated = false;
             owner = null;
@@ -185,7 +199,17 @@ public class Button : MonoBehaviour
                     StartCoroutine(FlashGateOff(eachGate));
                 }
             }
-
-        }
     }
+    public void DeactivateButtonNoLayers()
+    {
+        owner = null;
+        spComponent.color = deactivatedColor;
+        if (buttonHighlightSprite != null)
+        {
+            buttonHighlightSprite.enabled = false;
+        }
+        isActivated = false;
+    }
+    
+    // </marty>
 }

@@ -72,6 +72,7 @@ public class Button : MonoBehaviour
     {
         playSound = false;
         myCol.enabled = false;
+        DisableSubColliders();
         StartCoroutine(FadeMe());
     }
 
@@ -211,5 +212,16 @@ public class Button : MonoBehaviour
         isActivated = false;
     }
     
+    void DisableSubColliders()
+    {
+        ButtonSubcollider[] subcolliders = GetComponentsInChildren<ButtonSubcollider>();
+        if (subcolliders != null)
+        {
+            foreach (ButtonSubcollider colliderObject in subcolliders)
+            {
+                colliderObject.gameObject.GetComponent<Collider2D>().enabled = false;
+            }
+        }
+    }
     // </marty>
 }

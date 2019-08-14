@@ -9,7 +9,7 @@ public class MartysTrickyStickyButtons : MonoBehaviour {
     public bool firstGuy;
     //
     bool currentlyMoving;
-    float vDistance = 18;
+    public float vDistance = 18;
     public float moveSpeed;
     Vector3 targetPosition;
     //

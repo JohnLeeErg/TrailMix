@@ -481,6 +481,7 @@ public class PlayerPiece : MonoBehaviour
                     // if advanced, account for pieces of different elevations (the "shifting operation")
                     if (castDirection.y > 0)
                     {
+                        //print(gameObject.name);
                         // up casting
                         if (furthestPieceLeft == new Vector2(0, 0))
                         {
@@ -554,6 +555,7 @@ public class PlayerPiece : MonoBehaviour
                 {
                     if (CheckCastForJumpables(spaceCastLeft) && CheckCastForJumpables(spaceCastRight))
                     {
+                        print(gameObject.name);
                         return true;
                     }
                 }

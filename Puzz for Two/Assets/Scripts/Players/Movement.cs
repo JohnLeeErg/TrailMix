@@ -1061,7 +1061,7 @@ public class Movement : MonoBehaviour
                             downCheck = eachPiece.CheckCastForConfinedSpaceH(Vector2.down, 0, true);
                             if (downCheck) //queue effect for bottom side
                             {
-                                print("advanced Down succ");
+                                print("advanced Down succ ");
                                 PushIntoHorizontalConfinedSpace();
                                 break; //prevent checking for more as the conditions are met
                             }

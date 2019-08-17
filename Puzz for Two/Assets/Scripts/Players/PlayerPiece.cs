@@ -57,7 +57,6 @@ public class PlayerPiece : MonoBehaviour
         {
             highlightSprite = GetComponentInChildren<SpriteRenderer>(true).sprite;
         }
-        print("startcalled");
     }
 
     // Update is called once per frame
@@ -296,18 +295,27 @@ public class PlayerPiece : MonoBehaviour
         if (!IsGrounded()) //if the player isn't grounded
         {
             Vector2 spaceChecked = (Vector2)transform.position + (castDirection * (castLength + .1f)); //our position checking if there's an empty space
+            Vector2 advancedCheckUpShift = new Vector2(0, 0);
+            Vector2 advancedCheckDownShift = new Vector2(0, 0);
+
 
             if (!Physics2D.OverlapPoint(spaceChecked, solidLayers)) //REPLACE WITH NON ALLOC IF POSSIBLE
             {
-                
+
                 //recursively determine the number of pieces above/below this piece
                 //int activePiecesUp = GetActivePlayerPiecesInDirection(Vector2.up, transform.position, 1f, 0);
                 //int activePiecesDown = GetActivePlayerPiecesInDirection(Vector2.down, transform.position, 1f, 0);
 
                 //calculate size of casts depending on the active pieces
-                confinedSpaceYCastUp = activePiecesUp + CalculateConfinedYCast(yVelocity);
-                confinedSpaceYCastDown = activePiecesDown + CalculateConfinedYCast(yVelocity);
-
+                if (!advancedCheck)
+                {
+                    confinedSpaceYCastUp = activePiecesUp + CalculateConfinedYCast(yVelocity);
+                    confinedSpaceYCastDown = activePiecesDown + CalculateConfinedYCast(yVelocity);
+                } else
+                {
+                    confinedSpaceYCastUp = CalculateConfinedYCast(yVelocity);
+                    confinedSpaceYCastDown = CalculateConfinedYCast(yVelocity);
+                }
                 RaycastHit2D spaceCastUp;
                 RaycastHit2D spaceCastDown;
 
@@ -325,8 +333,44 @@ public class PlayerPiece : MonoBehaviour
                         spaceCastDown = Physics2D.Raycast(spaceChecked, Vector2.down, confinedSpaceYCastDown, confinedSpaceLayerMask);
                     } else
                     {
-                        spaceCastUp = Physics2D.Raycast(spaceChecked+furthestPieceUp, Vector2.up, confinedSpaceYCastUp, confinedSpaceLayerMask);
-                        spaceCastDown = Physics2D.Raycast(spaceChecked+furthestPieceDown, Vector2.down, confinedSpaceYCastDown, confinedSpaceLayerMask);
+                        // if advanced, account for pieces of different L/R positions (the "shifting operation")
+                        if (castDirection.x > 0)
+                        {
+                            // right casting
+                            if (furthestPieceUp == new Vector2(0, 0))
+                            {
+                                advancedCheckDownShift = furthestPieceRight;
+                            }
+                            else if (furthestPieceDown == new Vector2(0, 0))
+                            {
+                                advancedCheckUpShift = furthestPieceRight;
+                            }
+                            else
+                            {
+                                // this is not the topmost or bottommost piece. some other piece should handle it
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            // left casting
+                            if (furthestPieceUp == new Vector2(0, 0))
+                            {
+                                advancedCheckDownShift = furthestPieceLeft;
+                            }
+                            else if (furthestPieceDown == new Vector2(0, 0))
+                            {
+                                advancedCheckUpShift = furthestPieceLeft;
+                            }
+                            else
+                            {
+                                // this is not the topmost or bottommost piece. some other piece should handle it
+                                return false;
+                            }
+                        }
+
+                        spaceCastUp = Physics2D.Raycast(spaceChecked+advancedCheckUpShift, Vector2.up, confinedSpaceYCastUp, confinedSpaceLayerMask);
+                        spaceCastDown = Physics2D.Raycast(spaceChecked+advancedCheckDownShift, Vector2.down, confinedSpaceYCastDown, confinedSpaceLayerMask);
                     }
                 }
 
@@ -347,18 +391,29 @@ public class PlayerPiece : MonoBehaviour
                         } else
                         {
                             // undo the shifting operation from earlier
-                            openSpaceForPieces = Mathf.RoundToInt(Vector2.Distance(spaceCastUp.point-furthestPieceUp, spaceCastDown.point-furthestPieceDown));
+                            openSpaceForPieces = Mathf.RoundToInt(Vector2.Distance(spaceCastUp.point - new Vector2(advancedCheckUpShift.x,0), spaceCastDown.point - new Vector2(advancedCheckDownShift.x,0)));
                             //change back to ceil if issues persist
                         }
                     }
                 }
-
-                if (activePiecesUpAndDown == openSpaceForPieces) //check the open space for the cast is equal to the amount of pieces trying to get into it
+                if (!advancedCheck)
                 {
-                    if (CheckCastForJumpables(spaceCastUp) && CheckCastForJumpables(spaceCastDown))
+                    if (activePiecesUpAndDown == openSpaceForPieces) //check the open space for the cast is equal to the amount of pieces trying to get into it
                     {
-                        //Debug.Log(gameObject.name + "open space for pieces: " + openSpaceForPieces);
-                        return true;
+                        if (CheckCastForJumpables(spaceCastUp) && CheckCastForJumpables(spaceCastDown))
+                        {
+                            //Debug.Log(gameObject.name + "open space for pieces: " + openSpaceForPieces);
+                            return true;
+                        }
+                    }
+                } else
+                {
+                    if (Mathf.Abs(advancedCheckUpShift.y) + Mathf.Abs(advancedCheckDownShift.y) == openSpaceForPieces - 1) //check the open space for the cast is equal to the amount of pieces trying to get into it - MUST BE THE SIZE OF THE HOLE
+                    {
+                        if (CheckCastForJumpables(spaceCastUp) && CheckCastForJumpables(spaceCastDown))
+                        {
+                            return true;
+                        }
                     }
                 }
             }
@@ -426,16 +481,13 @@ public class PlayerPiece : MonoBehaviour
                     // if advanced, account for pieces of different elevations (the "shifting operation")
                     if (castDirection.y > 0)
                     {
-                        print("up casting");
                         // up casting
                         if (furthestPieceLeft == new Vector2(0, 0))
                         {
-                            print(furthestPieceUp);
                             advancedCheckRightShift = furthestPieceUp;
                         }
                         else if (furthestPieceRight == new Vector2(0, 0))
                         {
-                            print(furthestPieceUp);
                             advancedCheckLeftShift = furthestPieceUp;
                         } else
                         {
@@ -452,7 +504,8 @@ public class PlayerPiece : MonoBehaviour
                         else if (furthestPieceRight == new Vector2(0, 0))
                         {
                             advancedCheckLeftShift = furthestPieceDown;
-                        } else
+                        }
+                        else
                         {
                             // this is not the leftmost or rightmost piece. some other piece should handle it
                             return false;
@@ -460,12 +513,6 @@ public class PlayerPiece : MonoBehaviour
                     }
                     spaceCastLeft = Physics2D.Raycast(spaceChecked+ advancedCheckLeftShift, Vector2.left, confinedSpaceYCastLeft, confinedSpaceLayerMask);
                     spaceCastRight = Physics2D.Raycast(spaceChecked+ advancedCheckRightShift, Vector2.right, confinedSpaceYCastRight, confinedSpaceLayerMask);
-                    if (castDirection.y == 1)
-                    {
-                        print("check");
-                        print("leftFire: " + (spaceChecked + advancedCheckLeftShift) + ", leftpoint: " + spaceCastLeft.point);
-                        print("rightFire: " + (spaceChecked + advancedCheckRightShift) + ", rightpoint: " + spaceCastRight.point);
-                    }
                 }
             }
 
@@ -487,7 +534,6 @@ public class PlayerPiece : MonoBehaviour
 
                         //openSpaceForPieces = Mathf.CeilToInt(Mathf.Abs(spaceCastRight.point.x - spaceCastLeft.point.x));
                         // undo the shifting operation from earlier
-                        print("unrounded open space: " + Vector2.Distance(spaceCastLeft.point - new Vector2(0, advancedCheckLeftShift.y), spaceCastRight.point - new Vector2(0, advancedCheckRightShift.y)));
                         openSpaceForPieces = Mathf.RoundToInt(Vector2.Distance(spaceCastLeft.point- new Vector2(0,advancedCheckLeftShift.y), spaceCastRight.point- new Vector2(0, advancedCheckRightShift.y)));
                     }
                 }
@@ -503,9 +549,7 @@ public class PlayerPiece : MonoBehaviour
                 }
             } else
             {
-                if (castDirection.y == 1)
-                print(gameObject.name + " open space: " + openSpaceForPieces + " :: Distance: " + (Mathf.Abs(advancedCheckLeftShift.x) + Mathf.Abs(advancedCheckRightShift.x)));
-
+              
                 if (Mathf.Abs(advancedCheckLeftShift.x)+ Mathf.Abs(advancedCheckRightShift.x) == openSpaceForPieces - 1) //check the open space for the cast is equal to the amount of pieces trying to get into it - MUST BE THE SIZE OF THE HOLE
                 {
                     if (CheckCastForJumpables(spaceCastLeft) && CheckCastForJumpables(spaceCastRight))
@@ -544,10 +588,16 @@ public class PlayerPiece : MonoBehaviour
         if (parentHealth.health > 2)
         {
             furthestPieceUp = GetFurthestPlayerPieceInDirection(Vector2.up, (Vector2)transform.position , parentHealth.health);
-            furthestPieceDown = GetFurthestPlayerPieceInDirection(Vector2.down, (Vector2)transform.position , parentHealth.health);
+            furthestPieceDown = GetFurthestPlayerPieceInDirection(Vector2.down, (Vector2)transform.position, parentHealth.health);
             furthestPieceLeft = GetFurthestPlayerPieceInDirection(Vector2.left, (Vector2)transform.position, parentHealth.health);
             furthestPieceRight = GetFurthestPlayerPieceInDirection(Vector2.right, (Vector2)transform.position ,parentHealth.health);
 
+            /*             
+            furthestPieceUp = GetFurthestPlayerPieceInDirection(Vector2.up, (Vector2)transform.position + new Vector2(activePiecesUp,0), parentHealth.health);
+            furthestPieceDown = GetFurthestPlayerPieceInDirection(Vector2.down, (Vector2)transform.position - new Vector2(activePiecesDown, 0), parentHealth.health);
+            furthestPieceLeft = GetFurthestPlayerPieceInDirection(Vector2.left, (Vector2)transform.position - new Vector2(activePiecesLeft, 0), parentHealth.health);
+            furthestPieceRight = GetFurthestPlayerPieceInDirection(Vector2.right, (Vector2)transform.position + new Vector2(activePiecesRight, 0), parentHealth.health);
+            */
         }
     }
 
@@ -672,3 +722,4 @@ public class PlayerPiece : MonoBehaviour
     }
 
 }
+ 

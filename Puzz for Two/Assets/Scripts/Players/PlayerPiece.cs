@@ -649,19 +649,33 @@ public class PlayerPiece : MonoBehaviour
                     }
                 }
             }
+            
+            // if you can't find anything up or down, cast forward
+            RaycastHit2D castInDirection3 = Physics2D.Raycast(sweepPosition-direction, direction, 1f, playerPieceLayerMask);
+            if (castInDirection3)
+            {
+                if (castInDirection3.collider.transform.root == transform.root) //if from the same parent
+                {
+                    if (castInDirection3.collider.gameObject.activeInHierarchy)
+                    {
+                        furthestPieceDetected = castInDirection3.collider.transform.position - transform.position;
+                    }
+                }
+            }
             sweepPosition += direction;
-
             //if (direction == new Vector2(0, -1))
             //print(gameObject.name + " found: " + furthestPieceDetected);
 
-            if (castInDirection1.collider == null && castInDirection2.collider == null)
+            if (castInDirection1.collider == null && castInDirection2.collider == null && castInDirection3.collider == null)
             {
-                break;
+                    break;
             }
+            
+
         }
 
-        if (direction == new Vector2(1,0))
-        print(gameObject.name + " furthest right: " + furthestPieceDetected);
+        if (direction == new Vector2(0,1))
+        print(gameObject.name + " furthest up: " + furthestPieceDetected);
 
         // if it doesn't catch anything, return nothin
         return furthestPieceDetected;

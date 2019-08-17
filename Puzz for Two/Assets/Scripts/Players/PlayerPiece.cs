@@ -615,6 +615,17 @@ public class PlayerPiece : MonoBehaviour
     /// 
     /// - Marty
     /// 
+    /// UPDATE: 8/17
+    /// 
+    /// Um so the code below doesn't really do what it's billed to - (it no longer locates the furthest piece of a given direction), but it inexplicably works.
+    /// If we need to fix anything, I'M REALLY SORRY. I think this needs a total rewrite at some point if we want to expand on this at all. Or at least start from
+    /// michaels code and redo advanced suck, because this shit is really weird.
+    /// 
+    /// Originally there was one "scan" that would grab the actual right piece it's supposed to, but there were some cases where the one it really "wants" for succ
+    /// purposes is an adjacent piece, so now it's stupidly more complicated, half the scans get the wrong piece, BUT in every case that MATTERS every piece has
+    /// reference to the ones it should. There's a lot of redundant casting and general stupidity, but as far as I can tell this is the first thing that totally works :p
+    /// 
+    /// 
     /// </summary>
 
 

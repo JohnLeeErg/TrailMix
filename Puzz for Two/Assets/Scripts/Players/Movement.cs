@@ -29,6 +29,8 @@ public class Movement : MonoBehaviour
     float xPointJumpedFrom = 0;
     float xJumpSlowingPoint = 0;
     float slowingPointPosition = 0;
+    bool hasSuckedV = false;
+    bool hasSuckedH = false;
     [Header("Input")]
     public string hAxis, vAxis, jumpButton, lockHorizontal, resetButton;
     public bool grounded = false, rising = false;
@@ -258,7 +260,9 @@ public class Movement : MonoBehaviour
         UpdateVelocityY();
         if (confinedSpaceAssist)
         {
+            if (!hasSuckedV)
             CheckForVerticalConfinedSpace();
+            if (!hasSuckedH)
             CheckForHorizontalConfinedSpace();
         }
         if (squarsh)
@@ -944,6 +948,12 @@ public class Movement : MonoBehaviour
                     timeUngrounded = 0;
 
             }
+            // if you landed
+            if (!prevFrameGrounded && grounded)
+            {
+                hasSuckedV = false;
+                hasSuckedH = false;
+            }
         }
     }
 
@@ -1034,6 +1044,9 @@ public class Movement : MonoBehaviour
                 leftCheck = false;
             }
         }
+
+        hasSuckedV = true;
+
     }
 
     private bool upCheck = false, downCheck = false;
@@ -1127,6 +1140,8 @@ public class Movement : MonoBehaviour
             transform.position = new Vector2(roundedX, transform.position.y);
             downCheck = false;
         }
+
+        hasSuckedH = true;
 
     }
 

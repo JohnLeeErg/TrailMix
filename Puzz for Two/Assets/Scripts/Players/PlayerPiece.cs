@@ -30,6 +30,7 @@ public class PlayerPiece : MonoBehaviour
     static bool sucksWithPlayers = false;
     [HideInInspector] public RaycastHit2D leftCast, rightCast, upCast1, upCast2, downCast1, downCast2;  //the pieces next to it
     [HideInInspector] public Movement parentMovement;
+    [HideInInspector] public PlayerHealth parentHealth;
     [SerializeField] LayerMask solidLayers;
     BoxCollider2D myOwnCollider;
     public PlayerPiece pieceThatGrabsMe;
@@ -37,8 +38,13 @@ public class PlayerPiece : MonoBehaviour
     public groundMaterial currentGround;
     public Sprite highlightSprite;
     public int activePiecesUp, activePiecesDown, activePiecesLeft, activePiecesRight;
+    public Vector2 furthestPieceUp, furthestPieceDown, furthestPieceLeft, furthestPieceRight;
     [SerializeField] bool manuallySort;
     Vector2[] fourDirections = new Vector2[4] { Vector2.up, Vector2.down, Vector2.right, Vector2.left };
+    private void Awake()
+    {
+        parentHealth = GetComponentInParent<PlayerHealth>();
+    }
     // Use this for initialization
     void Start()
     {
@@ -51,7 +57,7 @@ public class PlayerPiece : MonoBehaviour
         {
             highlightSprite = GetComponentInChildren<SpriteRenderer>(true).sprite;
         }
-        
+        print("startcalled");
     }
 
     // Update is called once per frame
@@ -285,7 +291,7 @@ public class PlayerPiece : MonoBehaviour
     [SerializeField] LayerMask confinedSpaceLayerMask;
     [SerializeField] LayerMask playerPieceLayerMask;
 
-    public bool CheckCastForConfinedSpaceV(Vector2 castDirection, float yVelocity)
+    public bool CheckCastForConfinedSpaceV(Vector2 castDirection, float yVelocity, bool advancedCheck)
     {
         if (!IsGrounded()) //if the player isn't grounded
         {
@@ -307,13 +313,21 @@ public class PlayerPiece : MonoBehaviour
 
                 if (sucksWithPlayers)
                 {
+                    // if we're enabling this, it needs to be updated for advanced suck, see below
                     spaceCastUp = Physics2D.Raycast(spaceChecked, Vector2.up, confinedSpaceYCastUp, solidLayers);
                     spaceCastDown = Physics2D.Raycast(spaceChecked, Vector2.down, confinedSpaceYCastDown, solidLayers);
                 }
                 else
                 {
-                    spaceCastUp = Physics2D.Raycast(spaceChecked, Vector2.up, confinedSpaceYCastUp, confinedSpaceLayerMask);
-                    spaceCastDown = Physics2D.Raycast(spaceChecked, Vector2.down, confinedSpaceYCastDown, confinedSpaceLayerMask);
+                    if (!advancedCheck)
+                    {
+                        spaceCastUp = Physics2D.Raycast(spaceChecked, Vector2.up, confinedSpaceYCastUp, confinedSpaceLayerMask);
+                        spaceCastDown = Physics2D.Raycast(spaceChecked, Vector2.down, confinedSpaceYCastDown, confinedSpaceLayerMask);
+                    } else
+                    {
+                        spaceCastUp = Physics2D.Raycast(spaceChecked+furthestPieceUp, Vector2.up, confinedSpaceYCastUp, confinedSpaceLayerMask);
+                        spaceCastDown = Physics2D.Raycast(spaceChecked+furthestPieceDown, Vector2.down, confinedSpaceYCastDown, confinedSpaceLayerMask);
+                    }
                 }
 
                 //Debug.DrawLine(spaceChecked + new Vector2(.1f, 0f), spaceChecked + Vector2.up * confinedSpaceYCastUp, Color.blue);
@@ -326,8 +340,16 @@ public class PlayerPiece : MonoBehaviour
                 {
                     if (spaceCastUp.collider.transform.root != transform.root && spaceCastDown.collider.transform.root != transform.root)
                     {
-                        openSpaceForPieces = Mathf.RoundToInt(Vector2.Distance(spaceCastUp.point, spaceCastDown.point));
-                        //change back to ceil if issues persist
+                        if (!advancedCheck)
+                        {
+                            openSpaceForPieces = Mathf.RoundToInt(Vector2.Distance(spaceCastUp.point, spaceCastDown.point));
+                            //change back to ceil if issues persist
+                        } else
+                        {
+                            // undo the shifting operation from earlier
+                            openSpaceForPieces = Mathf.RoundToInt(Vector2.Distance(spaceCastUp.point-furthestPieceUp, spaceCastDown.point-furthestPieceDown));
+                            //change back to ceil if issues persist
+                        }
                     }
                 }
 
@@ -362,9 +384,11 @@ public class PlayerPiece : MonoBehaviour
 
     #region Vertical Suck
     private float confinedSpaceYCastLeft = .625f, confinedSpaceYCastRight = .625f;
-    public bool CheckCastForConfinedSpaceH(Vector2 castDirection, float xVelocity)
+    public bool CheckCastForConfinedSpaceH(Vector2 castDirection, float xVelocity, bool advancedCheck)
     {
         Vector2 spaceChecked = (Vector2)transform.position + (castDirection * (castLength + .1f)); //our position checking if there's an empty space
+        Vector2 advancedCheckLeftShift = new Vector2(0, 0);
+        Vector2 advancedCheckRightShift = new Vector2(0, 0);
 
         if (!Physics2D.OverlapPoint(spaceChecked, solidLayers)) //if not hitting ground in the downcast
         {
@@ -373,20 +397,76 @@ public class PlayerPiece : MonoBehaviour
             //int activePiecesRight = GetActivePlayerPiecesInDirection(Vector2.right, transform.position, 1f, 0);
 
             //calculate size of casts depending on the active pieces
-            confinedSpaceYCastLeft = activePiecesLeft + CalculateConfinedXCast(0);
-            confinedSpaceYCastRight = activePiecesRight + CalculateConfinedXCast(0);
+            if (!advancedCheck)
+            {
+                confinedSpaceYCastLeft = activePiecesLeft + CalculateConfinedXCast(0);
+                confinedSpaceYCastRight = activePiecesRight + CalculateConfinedXCast(0);
+            } else
+            {
+                confinedSpaceYCastLeft = CalculateConfinedXCast(0);
+                confinedSpaceYCastRight = CalculateConfinedXCast(0);
+            }
             RaycastHit2D spaceCastLeft;
             RaycastHit2D spaceCastRight;
 
             if (sucksWithPlayers)
             {
+                // if we're enabling this, it needs to be updated for advanced suck, see below
                 spaceCastLeft = Physics2D.Raycast(spaceChecked, Vector2.left, confinedSpaceYCastLeft, solidLayers);
                 spaceCastRight = Physics2D.Raycast(spaceChecked, Vector2.right, confinedSpaceYCastRight, solidLayers);
             }
             else
             {
-                spaceCastLeft = Physics2D.Raycast(spaceChecked, Vector2.left, confinedSpaceYCastLeft, confinedSpaceLayerMask);
-                spaceCastRight = Physics2D.Raycast(spaceChecked, Vector2.right, confinedSpaceYCastRight, confinedSpaceLayerMask);
+                if (!advancedCheck)
+                {
+                    spaceCastLeft = Physics2D.Raycast(spaceChecked, Vector2.left, confinedSpaceYCastLeft, confinedSpaceLayerMask);
+                    spaceCastRight = Physics2D.Raycast(spaceChecked, Vector2.right, confinedSpaceYCastRight, confinedSpaceLayerMask);
+                } else
+                {
+                    // if advanced, account for pieces of different elevations (the "shifting operation")
+                    if (castDirection.y > 0)
+                    {
+                        print("up casting");
+                        // up casting
+                        if (furthestPieceLeft == new Vector2(0, 0))
+                        {
+                            print(furthestPieceUp);
+                            advancedCheckRightShift = furthestPieceUp;
+                        }
+                        else if (furthestPieceRight == new Vector2(0, 0))
+                        {
+                            print(furthestPieceUp);
+                            advancedCheckLeftShift = furthestPieceUp;
+                        } else
+                        {
+                            // this is not the leftmost or rightmost piece. some other piece should handle it
+                            return false;
+                        }
+                    } else
+                    {
+                        // down casting
+                        if (furthestPieceLeft == new Vector2(0, 0))
+                        {
+                            advancedCheckRightShift = furthestPieceDown;
+                        }
+                        else if (furthestPieceRight == new Vector2(0, 0))
+                        {
+                            advancedCheckLeftShift = furthestPieceDown;
+                        } else
+                        {
+                            // this is not the leftmost or rightmost piece. some other piece should handle it
+                            return false;
+                        }
+                    }
+                    spaceCastLeft = Physics2D.Raycast(spaceChecked+ advancedCheckLeftShift, Vector2.left, confinedSpaceYCastLeft, confinedSpaceLayerMask);
+                    spaceCastRight = Physics2D.Raycast(spaceChecked+ advancedCheckRightShift, Vector2.right, confinedSpaceYCastRight, confinedSpaceLayerMask);
+                    if (castDirection.y == 1)
+                    {
+                        print("check");
+                        print("leftFire: " + (spaceChecked + advancedCheckLeftShift) + ", leftpoint: " + spaceCastLeft.point);
+                        print("rightFire: " + (spaceChecked + advancedCheckRightShift) + ", rightpoint: " + spaceCastRight.point);
+                    }
+                }
             }
 
             //Debug.DrawLine(spaceChecked, spaceChecked + Vector2.left * confinedSpaceYCastLeft, Color.blue);
@@ -399,15 +479,39 @@ public class PlayerPiece : MonoBehaviour
             {
                 if (spaceCastLeft.collider.transform.root != transform.root && spaceCastRight.collider.transform.root != transform.root)
                 {
-                    openSpaceForPieces = Mathf.CeilToInt(Vector2.Distance(spaceCastLeft.point, spaceCastRight.point));
+                    if (!advancedCheck)
+                    {
+                        openSpaceForPieces = Mathf.CeilToInt(Vector2.Distance(spaceCastLeft.point, spaceCastRight.point));
+                    } else
+                    {
+
+                        //openSpaceForPieces = Mathf.CeilToInt(Mathf.Abs(spaceCastRight.point.x - spaceCastLeft.point.x));
+                        // undo the shifting operation from earlier
+                        print("unrounded open space: " + Vector2.Distance(spaceCastLeft.point - new Vector2(0, advancedCheckLeftShift.y), spaceCastRight.point - new Vector2(0, advancedCheckRightShift.y)));
+                        openSpaceForPieces = Mathf.RoundToInt(Vector2.Distance(spaceCastLeft.point- new Vector2(0,advancedCheckLeftShift.y), spaceCastRight.point- new Vector2(0, advancedCheckRightShift.y)));
+                    }
                 }
             }
-
-            if (activePiecesLeftAndRight == openSpaceForPieces) //check the open space for the cast is equal to the amount of pieces trying to get into it - MUST BE THE SIZE OF THE HOLE
+            if (!advancedCheck)
             {
-                if (CheckCastForJumpables(spaceCastLeft) && CheckCastForJumpables(spaceCastRight))
+                if (activePiecesLeftAndRight == openSpaceForPieces) //check the open space for the cast is equal to the amount of pieces trying to get into it - MUST BE THE SIZE OF THE HOLE
                 {
-                    return true;
+                    if (CheckCastForJumpables(spaceCastLeft) && CheckCastForJumpables(spaceCastRight))
+                    {
+                        return true;
+                    }
+                }
+            } else
+            {
+                if (castDirection.y == 1)
+                print(gameObject.name + " open space: " + openSpaceForPieces + " :: Distance: " + (Mathf.Abs(advancedCheckLeftShift.x) + Mathf.Abs(advancedCheckRightShift.x)));
+
+                if (Mathf.Abs(advancedCheckLeftShift.x)+ Mathf.Abs(advancedCheckRightShift.x) == openSpaceForPieces - 1) //check the open space for the cast is equal to the amount of pieces trying to get into it - MUST BE THE SIZE OF THE HOLE
+                {
+                    if (CheckCastForJumpables(spaceCastLeft) && CheckCastForJumpables(spaceCastRight))
+                    {
+                        return true;
+                    }
                 }
             }
         }
@@ -436,12 +540,86 @@ public class PlayerPiece : MonoBehaviour
         activePiecesDown = GetActivePlayerPiecesInDirection(Vector2.down, transform.position, 1f, 0);
         activePiecesLeft = GetActivePlayerPiecesInDirection(Vector2.left, transform.position, 1f, 0);
         activePiecesRight = GetActivePlayerPiecesInDirection(Vector2.right, transform.position, 1f, 0);
+        // if advanced succ may be necessary, calculate further bounds
+        if (parentHealth.health > 2)
+        {
+            furthestPieceUp = GetFurthestPlayerPieceInDirection(Vector2.up, (Vector2)transform.position , parentHealth.health);
+            furthestPieceDown = GetFurthestPlayerPieceInDirection(Vector2.down, (Vector2)transform.position , parentHealth.health);
+            furthestPieceLeft = GetFurthestPlayerPieceInDirection(Vector2.left, (Vector2)transform.position, parentHealth.health);
+            furthestPieceRight = GetFurthestPlayerPieceInDirection(Vector2.right, (Vector2)transform.position ,parentHealth.health);
+
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// NOTES ON ADVANCED SUCK:
+    /// 
+    /// This is not a miracle cure for all cases! Advanced suck accounts for the furthest pieces left and right, or up and down, given that they're on different
+    /// rows/columns. If the player health maxes at five, this shouldn't break anything. Six pieces and up will introduce problems. If we want to dip into that design territory
+    /// there should really be a better system for calculating sucks.
+    /// 
+    /// Sorry I made your code a lot less readable michael :(
+    /// 
+    /// - Marty
+    /// 
+    /// </summary>
+
+
+    Vector2 GetFurthestPlayerPieceInDirection(Vector2 direction, Vector2 sweepStartingPosition, float sweepCastLength)
+    {
+        // add one to the starting position 
+        Vector2 sweepPosition = sweepStartingPosition + direction;
+        Vector2 furthestPieceDetected = new Vector2(0, 0);
+
+        // SWEEP: cast up and down by the total health (guaranteed to catch everything), & continue till the furthest piece is found
+        while (true)
+        {
+            RaycastHit2D castInDirection1 = Physics2D.Raycast(sweepPosition, Quaternion.Euler(0, 0, 90) * direction, sweepCastLength, playerPieceLayerMask);
+            if (castInDirection1)
+            {
+                if (castInDirection1.collider.transform.root == transform.root) //if from the same parent
+                {
+                    if (castInDirection1.collider.gameObject.activeInHierarchy)
+                    {
+                        furthestPieceDetected = castInDirection1.collider.transform.position - transform.position;
+                    }
+                }
+            }
+            RaycastHit2D castInDirection2 = Physics2D.Raycast(sweepPosition, Quaternion.Euler(0, 0, -90) * direction, sweepCastLength, playerPieceLayerMask);
+            if (castInDirection2)
+            {
+                if (castInDirection2.collider.transform.root == transform.root) //if from the same parent
+                {
+                    if (castInDirection2.collider.gameObject.activeInHierarchy)
+                    {
+                        furthestPieceDetected = castInDirection2.collider.transform.position - transform.position;
+                    }
+                }
+            }
+            sweepPosition += direction;
+
+            //if (direction == new Vector2(0, -1))
+            //print(gameObject.name + " found: " + furthestPieceDetected);
+
+            if (castInDirection1.collider == null && castInDirection2.collider == null)
+            {
+                break;
+            }
+        }
+
+        if (direction == new Vector2(1,0))
+        print(gameObject.name + " furthest right: " + furthestPieceDetected);
+
+        // if it doesn't catch anything, return nothin
+        return furthestPieceDetected;
     }
 
     int GetActivePlayerPiecesInDirection(Vector2 direction, Vector2 castPosition, float castDistance, int currentPieceCount)
     {
         if (GetActivePiecesInRange(direction, castPosition, castDistance, playerPieceLayerMask) <= 0)
         {
+            // advanced zucc goes here
             return currentPieceCount; //return the amount of pieces
         }
 

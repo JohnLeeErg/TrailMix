@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     [SerializeField] InputProfile inputSettings;
     public GroundMaterialProfile groundMatSettings;
     [HideInInspector] public MyCharacterActions playerInput;
+    [HideInInspector] public PlayerHealth playerHealth;
     [SerializeField] string gridParentName;
     NewControllerManager controllerManagerInstance;
 
@@ -162,6 +163,8 @@ public class Movement : MonoBehaviour
         throwComp = GetComponent<PlayerThrowing>();
         xPointJumpedFrom = transform.position.x;
         slowingPointPosition = maxHorizontalJump * xJumpSlowingPoint;
+
+        playerHealth = GetComponent<PlayerHealth>();
 
         //Math to calculate jump accel and initial v
         risingGravity = -((2 * jumpHeight) / (riseTime * riseTime));
@@ -955,27 +958,51 @@ public class Movement : MonoBehaviour
     {
         if (!grounded) //if player is not grounded and horizontal x input is greater than the threshold
         {
+            // only run advanced check if the player is large enough to be a weird shape
+            bool advancedCheck = (playerHealth.health > 2);
+
             foreach (PlayerPiece eachPiece in pieces)
             {
                 if (eachPiece.gameObject.activeInHierarchy)
                 {
                     if (movementInput.x >= confinedXThreshold) //right (positive)
                     {
-                        rightCheck = eachPiece.CheckCastForConfinedSpaceV(Vector2.right, yVelocity);
+                        rightCheck = eachPiece.CheckCastForConfinedSpaceV(Vector2.right, yVelocity,false);
                         if (rightCheck) //queue effect for right side
                         {
                             PushIntoVerticalConfinedSpace();
                             break; //prevent checking for more as the conditions are met
                         }
+                        // if advanced, run this one too
+                        if (advancedCheck)
+                        {
+                            rightCheck = eachPiece.CheckCastForConfinedSpaceV(Vector2.right, yVelocity, true);
+                            if (rightCheck) //queue effect for right side
+                            {
+                                print("advanced Right succ");
+                                PushIntoVerticalConfinedSpace();
+                                break; //prevent checking for more as the conditions are met
+                            }
+                        }
                     }
 
                     if (movementInput.x <= -confinedXThreshold) //left (negative)
                     {
-                        leftCheck = eachPiece.CheckCastForConfinedSpaceV(Vector2.left, yVelocity);
+                        leftCheck = eachPiece.CheckCastForConfinedSpaceV(Vector2.left, yVelocity,false);
                         if (leftCheck) //queue effect for left side
                         {
                             PushIntoVerticalConfinedSpace();
                             break; //prevent checking for more as the conditions are met
+                        }
+                        if (advancedCheck)
+                        {
+                            leftCheck = eachPiece.CheckCastForConfinedSpaceV(Vector2.left, yVelocity, true);
+                            if (leftCheck) //queue effect for left side
+                            {
+                                print("advanced Left succ");
+                                PushIntoVerticalConfinedSpace();
+                                break; //prevent checking for more as the conditions are met
+                            }
                         }
                     }
                 }
@@ -1016,15 +1043,28 @@ public class Movement : MonoBehaviour
         {
             if (Mathf.Abs(movementInput.x) <= .2f) //if no input
             {
+                // only run advanced check if the player is large enough to be a weird shape
+                bool advancedCheck = (playerHealth.health > 2);
+
                 foreach (PlayerPiece eachPiece in pieces)
                 {
                     if (eachPiece.gameObject.activeInHierarchy)
                     {
-                        downCheck = eachPiece.CheckCastForConfinedSpaceH(Vector2.down, 0);
+                        downCheck = eachPiece.CheckCastForConfinedSpaceH(Vector2.down, 0, false);
                         if (downCheck) //queue effect for bottom side
                         {
                             PushIntoHorizontalConfinedSpace();
                             break; //prevent checking for more as the conditions are met
+                        }
+                        if (advancedCheck)
+                        {
+                            downCheck = eachPiece.CheckCastForConfinedSpaceH(Vector2.down, 0, true);
+                            if (downCheck) //queue effect for bottom side
+                            {
+                                print("advanced Down succ");
+                                PushIntoHorizontalConfinedSpace();
+                                break; //prevent checking for more as the conditions are met
+                            }
                         }
                     }
                 }
@@ -1038,16 +1078,30 @@ public class Movement : MonoBehaviour
     /// <returns>returns true if it has adjusted the player's position</returns>
     bool UpwardConfinedSpaceCheck()
     {
+        // only run advanced check if the player is large enough to be a weird shape
+        bool advancedCheck = (playerHealth.health > 2);
+
         foreach (PlayerPiece eachPiece in pieces)
         {
             if (eachPiece.gameObject.activeInHierarchy)
             {
-                upCheck = eachPiece.CheckCastForConfinedSpaceH(Vector2.up, 1);
+                upCheck = eachPiece.CheckCastForConfinedSpaceH(Vector2.up, 1, false);
                 if (upCheck) //queue effect for top side
                 {
                     PushIntoHorizontalConfinedSpace();
 
                     return true; //prevent checking for more as the conditions are met
+                }
+                if (advancedCheck)
+                {
+                    upCheck = eachPiece.CheckCastForConfinedSpaceH(Vector2.up, 1, true);
+                    if (upCheck) //queue effect for top side
+                    {
+                        print("advanced Up succ");
+                        PushIntoHorizontalConfinedSpace();
+
+                        return true; //prevent checking for more as the conditions are met
+                    }
                 }
             }
         }

@@ -627,55 +627,89 @@ public class PlayerPiece : MonoBehaviour
         // SWEEP: cast up and down by the total health (guaranteed to catch everything), & continue till the furthest piece is found
         while (true)
         {
-            RaycastHit2D castInDirection1 = Physics2D.Raycast(sweepPosition, Quaternion.Euler(0, 0, 90) * direction, sweepCastLength, playerPieceLayerMask);
-            if (castInDirection1)
+            RaycastHit2D castInDirection1, castInDirection2, castInDirection3;
+            while (true)
             {
-                if (castInDirection1.collider.transform.root == transform.root) //if from the same parent
+                castInDirection1 = Physics2D.Raycast(sweepPosition, Quaternion.Euler(0, 0, 90) * direction, sweepCastLength, playerPieceLayerMask);
+                if (castInDirection1)
                 {
-                    if (castInDirection1.collider.gameObject.activeInHierarchy)
+                    if (castInDirection1.collider.transform.root == transform.root) //if from the same parent
                     {
-                        furthestPieceDetected = castInDirection1.collider.transform.position - transform.position;
+                        if (castInDirection1.collider.gameObject.activeInHierarchy)
+                        {
+                            if (furthestPieceDetected.magnitude < (castInDirection1.collider.transform.position - transform.position).magnitude)
+                            {
+                                furthestPieceDetected = castInDirection1.collider.transform.position - transform.position;
+                            }
+                        }
                     }
                 }
-            }
-            RaycastHit2D castInDirection2 = Physics2D.Raycast(sweepPosition, Quaternion.Euler(0, 0, -90) * direction, sweepCastLength, playerPieceLayerMask);
-            if (castInDirection2)
-            {
-                if (castInDirection2.collider.transform.root == transform.root) //if from the same parent
+                else
                 {
-                    if (castInDirection2.collider.gameObject.activeInHierarchy)
-                    {
-                        furthestPieceDetected = castInDirection2.collider.transform.position - transform.position;
-                    }
-                }
-            }
-            
-            // if you can't find anything up or down, cast forward
-            RaycastHit2D castInDirection3 = Physics2D.Raycast(sweepPosition-direction, direction, 1f, playerPieceLayerMask);
-            if (castInDirection3)
-            {
-                if (castInDirection3.collider.transform.root == transform.root) //if from the same parent
-                {
-                    if (castInDirection3.collider.gameObject.activeInHierarchy)
-                    {
-                        furthestPieceDetected = castInDirection3.collider.transform.position - transform.position;
-                    }
-                }
-            }
-            sweepPosition += direction;
-            //if (direction == new Vector2(0, -1))
-            //print(gameObject.name + " found: " + furthestPieceDetected);
-
-            if (castInDirection1.collider == null && castInDirection2.collider == null && castInDirection3.collider == null)
-            {
                     break;
+                }
+                Vector2 positionIncrement = (Quaternion.Euler(0, 0, 90) * direction);
+                sweepPosition += positionIncrement;
+            } while (true)
+            {
+                 castInDirection2 = Physics2D.Raycast(sweepPosition, Quaternion.Euler(0, 0, -90) * direction, sweepCastLength, playerPieceLayerMask);
+                if (castInDirection2)
+                {
+                    if (castInDirection2.collider.transform.root == transform.root) //if from the same parent
+                    {
+                        if (castInDirection2.collider.gameObject.activeInHierarchy)
+                        {
+                            if (furthestPieceDetected.magnitude < (castInDirection2.collider.transform.position - transform.position).magnitude)
+                            {
+                                furthestPieceDetected = castInDirection2.collider.transform.position - transform.position;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    break;
+                }
+                Vector2 positionIncrement = (Quaternion.Euler(0, 0, -90) * direction);
+                sweepPosition += positionIncrement;
+            } while (true)
+            {
+                castInDirection3 = Physics2D.Raycast(sweepPosition - direction, direction, 1f, playerPieceLayerMask);
+                if (castInDirection3)
+                {
+                    if (castInDirection3.collider.transform.root == transform.root) //if from the same parent
+                    {
+                        if (castInDirection3.collider.gameObject.activeInHierarchy)
+                        {
+                            if (furthestPieceDetected.magnitude < (castInDirection3.collider.transform.position - transform.position).magnitude)
+                            {
+                                furthestPieceDetected = castInDirection3.collider.transform.position - transform.position;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    break;
+                }
+                Vector2 positionIncrement = (direction);
+                sweepPosition += positionIncrement;
             }
-            
+                //sweepPosition += direction;
 
-        }
+                //if (direction == new Vector2(0, -1))
+                //print(gameObject.name + " found: " + furthestPieceDetected);
 
-        if (direction == new Vector2(0,1))
-        print(gameObject.name + " furthest up: " + furthestPieceDetected);
+                if (castInDirection1.collider == null && castInDirection2.collider == null && castInDirection3.collider == null)
+                {
+                    break;
+                }
+
+            }
+        
+
+        if (direction == new Vector2(-1,0))
+        print(gameObject.name + " furthest left: " + furthestPieceDetected);
 
         // if it doesn't catch anything, return nothin
         return furthestPieceDetected;

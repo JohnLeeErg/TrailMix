@@ -42739,8 +42739,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 118613485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 99, y: -23, z: -0.0000019074}
-  m_LocalScale: {x: 29129.51, y: 811.9, z: 3648.2725}
+  m_LocalPosition: {x: 93.4, y: -42.7, z: -0.0000019074}
+  m_LocalScale: {x: 29129.51, y: 1648.4818, z: 3648.2725}
   m_Children: []
   m_Father: {fileID: 1853264479}
   m_RootOrder: 8
@@ -42781,7 +42781,7 @@ SpriteRenderer:
   m_SortingLayer: -6
   m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: e092d3d5d2b28dd47b86d1ae635c9c4a, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.42735004, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.6028013, a: 0.83137256}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -44904,7 +44904,7 @@ Tilemap:
   - m_RefCount: 135
     m_Data: {r: 1, g: 1, b: 1, a: 0}
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.26415092, g: 0.1457814, b: 0.2069761, a: 1}
+  m_Color: {r: 0.1792453, g: 0, b: 0.09559748, a: 1}
   m_Origin: {x: 0, y: -56, z: 0}
   m_Size: {x: 39, y: 56, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -103074,7 +103074,7 @@ Prefab:
     - target: {fileID: 224125397854065384, guid: fb8a67966bd8e324196262cd3520d2d9,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -58.224243
+      value: -58.22412
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb8a67966bd8e324196262cd3520d2d9, type: 2}
@@ -144399,7 +144399,7 @@ Tilemap:
   - m_RefCount: 127
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.14676042, g: 0.24815366, b: 0.3207547, a: 1}
+  m_Color: {r: 0.3938679, g: 0.4551887, b: 0.5, a: 1}
   m_Origin: {x: 0, y: -50, z: 0}
   m_Size: {x: 34, y: 50, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -147016,7 +147016,7 @@ Tilemap:
   - m_RefCount: 235
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3938679, g: 0.4551887, b: 0.5, a: 1}
   m_Origin: {x: -188, y: -95, z: 0}
   m_Size: {x: 271, y: 129, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}

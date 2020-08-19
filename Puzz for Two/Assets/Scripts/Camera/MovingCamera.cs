@@ -39,7 +39,7 @@ public class MovingCamera : MonoBehaviour
         //manually set to pos right away
         transform.position = new Vector3(AveragePosition().x, AveragePosition().y, cam.transform.position.z);
     }
-    void Update()
+    void FixedUpdate()
     {
         if (biasCamera)
         {
@@ -70,6 +70,8 @@ public class MovingCamera : MonoBehaviour
 
             Vector3 targetPosition = new Vector3(AveragePosition().x, AveragePosition().y, cam.transform.position.z);
             cam.transform.position = new Vector3(Mathf.Lerp(cam.transform.position.x, targetPosition.x, moveSpeed * Time.deltaTime), Mathf.Lerp(cam.transform.position.y, targetPosition.y, moveSpeed * Time.deltaTime), cam.transform.position.z);
+            //Alternate method that does not use hellish lerps:
+            //cam.transform.position = new Vector3(Mathf.MoveTowards(cam.transform.position.x, targetPosition.x, moveSpeed * Mathf.Abs(targetPosition.x - cam.transform.position.x) * Time.deltaTime), Mathf.MoveTowards(cam.transform.position.y, targetPosition.y, moveSpeed * Mathf.Abs(targetPosition.y - cam.transform.position.y) * Time.deltaTime), cam.transform.position.z);
 
             // cam.transform.position = new Vector3(cam.transform.position.x, AveragePosition().y, cam.transform.position.z);
 

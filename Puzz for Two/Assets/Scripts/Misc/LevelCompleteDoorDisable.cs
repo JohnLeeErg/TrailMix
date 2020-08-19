@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelCompleteDoorDisable : MonoBehaviour
 {
     SaveManager saveManagerInstance;
-
+    [SerializeField] int levelRequirement;
     // Use this for initialization
     void Start()
     {
@@ -13,7 +13,7 @@ public class LevelCompleteDoorDisable : MonoBehaviour
 
         if (saveManagerInstance != null)
         {
-            if (saveManagerInstance.save.levelsComplete >= 3)
+            if (saveManagerInstance.save.levelsComplete >= levelRequirement)
             {
                 gameObject.SetActive(false);
             }

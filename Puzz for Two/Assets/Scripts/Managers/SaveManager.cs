@@ -24,7 +24,7 @@ public class SaveManager : MonoBehaviour {
     [SerializeField] GameObject myChild;
     public class SaveFile
     {
-        public int gameVersion = 1;
+        public int gameVersion = 2;
 
         public Vector2 player1Position, player2Position;
         public string currentLevel;

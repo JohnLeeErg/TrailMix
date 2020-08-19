@@ -63,6 +63,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Levels/The Destination.unity
     guid: 974be0e8c57a0054e8eb602ab09f0b46
   - enabled: 1
+    path: Assets/Scenes/Final Levels/You-ko Blocks.unity
+    guid: ab90f29a343d4074098e49bbf002d2c0
+  - enabled: 1
+    path: Assets/Scenes/Final Levels/lotr2ART.unity
+    guid: c63aa819952d45f4cb4a90955df3fb73
+  - enabled: 1
     path: Assets/Scenes/visual scenes/Demo_Thanks.unity
     guid: f0200dcbf7a2a584590e7de978cdb656
   m_configObjects: {}

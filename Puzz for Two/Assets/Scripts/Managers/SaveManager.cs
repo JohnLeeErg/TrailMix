@@ -99,7 +99,7 @@ public class SaveManager : MonoBehaviour {
         }
         cigPasswordInts = new int[] { 532,920,5963,95323,1553,
                                       0643,125,12566,52354,163,
-                                      7273,123,2135}; //242612
+                                      7273,123,2135,22,215}; //242849
         for(int i=0;i<levelNames.Length;i++)
         {
             if (cigPasswordInts.Length > i)

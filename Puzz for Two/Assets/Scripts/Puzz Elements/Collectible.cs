@@ -5,7 +5,8 @@ using UnityEngine;
 enum CollectableType
 {
     cig,
-    lipstick
+    lipstick,
+    TheThirdType
 }
 public class Collectible : MonoBehaviour {
     Campfire campRef;

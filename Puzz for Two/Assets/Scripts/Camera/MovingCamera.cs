@@ -167,6 +167,11 @@ public class MovingCamera : MonoBehaviour
         return dist;
     }
 
+    //function for my one level where I want to change the camera's bg color at the end
+    public void BlackOutCamera(Camera camToBlack)
+    {
+        camToBlack.backgroundColor = Color.black;
+    }
     //IEnumerator MoveToPosition(Vector3 targetPosition)
     //{
         

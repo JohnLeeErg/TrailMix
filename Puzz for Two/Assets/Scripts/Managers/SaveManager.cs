@@ -81,6 +81,7 @@ public class SaveManager : MonoBehaviour {
         if(player2==null)
             player2 = GameObject.Find("Player 2").transform;
 
+        
     }
 
     private void Awake()
@@ -164,6 +165,7 @@ public class SaveManager : MonoBehaviour {
         {
             if (SceneManager.GetSceneByBuildIndex(level) == SceneManager.GetSceneByName("Level_Select")) //THIS NEEDS TO BE THE BUILD INDEX OF THE LEVEL SELECT
                 StartCoroutine(UpdateBasedOnSave());
+
         }
     }
     /// <summary>
@@ -182,6 +184,10 @@ public class SaveManager : MonoBehaviour {
         //print(save.player1Position);
         player1.position = save.player1Position;
         player2.position = save.player2Position;
+
+        
+        
+
         //print(player1.position);
         //auto update the camera pos so that you dont see it zoot over
         MovingCamera camRef=Camera.main.transform.root.GetComponentInChildren<MovingCamera>();

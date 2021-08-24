@@ -606,10 +606,10 @@ public class Movement : MonoBehaviour
 
     void TwoPlayerOneKeyboard()
     {
-        if (controllerManagerInstance.swapPermitted == false)
-        {
-            controllerManagerInstance.swapPermitted = true;
-        }
+        //if (controllerManagerInstance.swapPermitted == false)
+        //{
+        //    controllerManagerInstance.swapPermitted = true;
+        //}
 
         if (playerNumber == 0)
         {
